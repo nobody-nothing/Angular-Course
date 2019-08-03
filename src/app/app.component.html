@@ -1,7 +1,33 @@
+<!--
+  Остановился в конце лекции за 01.07
+  Чекбокс не работает, хуй знает чому, в конце предыдущей лекции надо посмотреть что сделал не так, потому что сайдбар выдавал какую то ошибку, не смотря на то, что работал.
+  Может быть из-за него и exchange-rates не работает.
+-->
+
+
 <app-header [title] = 'title' [drawer] = 'drawer'></app-header>
 
 <app-sidebar (setSidenavControl)="setSidenav($event)">
 
-  <div>Content 1</div>
+  <mat-form-field class="product-search">
+    <input matInput placeholder="Search product" (input) = 'search($event)'>
+  </mat-form-field>
+
+  <mat-checkbox (change) = 'toggleFavourites($event)'>Show favourites only</mat-checkbox>
+
+
+  <mat-grid-list cols="4" [rowHeight]="500" *ngIf="products$ | async as products; else loader">
+    <mat-grid-tile *ngFor = "let product of products | productsFilter: searchTerm:onlyFavourites; odd as isOdd; trackBy: trackByFn">
+    <app-product-component [product]="product" [isOdd]="isOdd"></app-product-component>
+    </mat-grid-tile>
+  </mat-grid-list>
+
+
+
+  <ng-template #loader>
+    <div class = 'loader-container'>
+      <mat-spinner></mat-spinner>
+    </div>
+  </ng-template>
 
 </app-sidebar>

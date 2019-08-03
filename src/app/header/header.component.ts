@@ -17,8 +17,7 @@ import {MatSidenav} from '@angular/material';
   templateUrl: './header.component.html',
   styleUrls: ['./header.component.css'],
 })
-export class HeaderComponent implements OnInit, OnChanges, AfterViewInit,
-  AfterViewChecked, AfterContentInit, AfterContentChecked, DoCheck {
+export class HeaderComponent {
 
   @Input()
   public title: string;
@@ -28,41 +27,43 @@ export class HeaderComponent implements OnInit, OnChanges, AfterViewInit,
 
   public headerTitleColor = this.sanitizer.bypassSecurityTrustStyle('color: orange');
 
+  public rates = [{value: 26.25, currenct: 'USD'}, {value: 30.25, currency: 'EUR'}, {value: 0.42, currency: 'USD'}]
+
   constructor(
     private sanitizer: DomSanitizer
   ) {
-    console.log('Constructor', this.title);
   }
 
   public toggleSidenav(): void {
-    console.log(this.drawer);
     this.drawer.toggle();
   }
- /* ngOnInit() {
-    console.log('ngOnInit');
-  }
-
-  ngAfterViewInit(): void {
-    console.log('ngAfterViewInit');
-  }
-
-  ngDoCheck(): void {
-    console.log('ngDoCheck');
-  }
-
-  ngAfterViewChecked(): void {
-    console.log('ngAfterViewChecked');
-  }
-
-  ngAfterContentInit(): void {
-    console.log('ngAfterContentInit');
-  }
-
-  ngAfterContentChecked(): void {
-    console.log('ngAfterContentChecked');
-  }
-
-  ngOnChanges(changes: SimpleChanges): void {
-    console.log('ngOnChanges: ', changes);
-  }*/
 }
+
+
+/* ngOnInit() {
+   console.log('ngOnInit');
+ }
+
+ ngAfterViewInit(): void {
+   console.log('ngAfterViewInit');
+ }
+
+ ngDoCheck(): void {
+   console.log('ngDoCheck');
+ }
+
+ ngAfterViewChecked(): void {
+   console.log('ngAfterViewChecked');
+ }
+
+ ngAfterContentInit(): void {
+   console.log('ngAfterContentInit');
+ }
+
+ ngAfterContentChecked(): void {
+   console.log('ngAfterContentChecked');
+ }
+
+ ngOnChanges(changes: SimpleChanges): void {
+   console.log('ngOnChanges: ', changes);
+ }*/

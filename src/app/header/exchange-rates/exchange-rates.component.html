@@ -1,0 +1,9 @@
+<div *appExchangeRates = "let rate from rates; let ctrl = controller">
+  <button mat-button (click) = 'ctrl.prev()'>
+    <mat-icon matListIcon>keyboard_arrow_left</mat-icon>
+  </button>
+  <span>{{rate.value | currency: rate.currency: 'symbol-narrow'}}</span>
+  <button mat-button (click) = 'ctrl.next()'>
+    <mat-icon matListIcon>keyboard_arrow_right</mat-icon>
+  </button>
+</div>
